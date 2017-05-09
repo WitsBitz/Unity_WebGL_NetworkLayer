@@ -36,9 +36,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4322603609835514}
-  - component: {fileID: 114885511793255748}
-  - component: {fileID: 114216341192009426}
-  - component: {fileID: 114235048702486186}
   m_Layer: 0
   m_Name: LeftHandGeneric
   m_TagString: LeftHand
@@ -112,67 +109,3 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1191694531640466}
   m_Mesh: {fileID: 4300000, guid: 03ff5e30e14cb064383359326c544041, type: 3}
---- !u!114 &114216341192009426
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1956665328678704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8139641d632c2b841bde00bb4b6b3792, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncPosition: 1
-  positionThreshold: 0.01
-  positionInterpolation: 20
-  syncRotation: 1
-  rotationThreshold: 0.01
-  rotationInterpolation: 20
-  syncScale: 1
-  scaleThreshold: 0.01
-  useHistorcalLerping: 0
-  activatableObject: {fileID: 0}
---- !u!114 &114235048702486186
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1956665328678704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 026f61fcf4b27794fb600ba2dcea80cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114885511793255748
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1956665328678704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 159
-    i1: 8
-    i2: 22
-    i3: 110
-    i4: 15
-    i5: 17
-    i6: 247
-    i7: 148
-    i8: 248
-    i9: 37
-    i10: 153
-    i11: 233
-    i12: 26
-    i13: 8
-    i14: 20
-    i15: 202
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1

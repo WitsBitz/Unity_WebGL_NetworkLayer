@@ -36,8 +36,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4065427376305630}
-  - component: {fileID: 114361510740243630}
-  - component: {fileID: 114373846997423928}
   m_Layer: 0
   m_Name: HeadGeneric
   m_TagString: Head
@@ -111,48 +109,3 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1710558219579232}
   m_Mesh: {fileID: 4300000, guid: 20e497e58413126458f61bf746def101, type: 3}
---- !u!114 &114361510740243630
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1952693827437922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 48
-    i1: 227
-    i2: 187
-    i3: 42
-    i4: 187
-    i5: 205
-    i6: 231
-    i7: 68
-    i8: 43
-    i9: 6
-    i10: 0
-    i11: 226
-    i12: 109
-    i13: 45
-    i14: 81
-    i15: 194
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
---- !u!114 &114373846997423928
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1952693827437922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eca315916c2fecd4098c27cc3944654d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hmd: {fileID: 0}
-  parentIsLocalPlayer: 0

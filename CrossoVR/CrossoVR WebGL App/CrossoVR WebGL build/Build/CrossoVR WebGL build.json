@@ -1,0 +1,9 @@
+{
+"TOTAL_MEMORY": 268435456,
+"dataUrl": "CrossoVR WebGL build.data.unityweb",
+"asmCodeUrl": "CrossoVR WebGL build.asm.code.unityweb",
+"asmMemoryUrl": "CrossoVR WebGL build.asm.memory.unityweb",
+"asmFrameworkUrl": "CrossoVR WebGL build.asm.framework.unityweb",
+"splashScreenStyle": "Dark",
+"backgroundColor": "#222C36"
+}
