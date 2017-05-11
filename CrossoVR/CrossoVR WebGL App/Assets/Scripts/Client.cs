@@ -35,7 +35,7 @@ public class Client : MonoBehaviour {
 
 	public GameObject playerPrefab;
 
-	public List<Player> players = new List<Player>();
+	public Dictionary<int, Player> players = new Dictionary<int, Player>();
 
 	public void Connect()
 	{
@@ -99,6 +99,11 @@ public class Client : MonoBehaviour {
 						break;
 
 					case "DC":
+						PlayerDisconnected(int.Parse(splitMsg[1]));
+						break;
+
+					case "ASKPOSITION":
+						OnAskPosition(splitMsg);
 						break;
 				}
 				break;
@@ -120,6 +125,29 @@ public class Client : MonoBehaviour {
 		}
 	}
 
+	private void OnAskPosition(string[] data)
+	{
+		if(!isStarted)
+			return;
+		//Update everyone else
+		for (int i = 1; i < data.Length - 1; i++)
+		{
+			string[] d = data[i].Split('%');
+			//Prevent server from updating us
+			if(ourClientId != int.Parse(d[0]))
+			{
+				Vector3 position = Vector3.zero;
+				position.x = float.Parse(d[1]);
+				position.y = float.Parse(d[2]);
+				players[int.Parse(d[0])].avatar.transform.position = position;
+			}
+		}
+		// Send our own position
+		Vector3 myPosition = players[ourClientId].avatar.transform.position;
+		string m = "MYPOSITION|" + myPosition.x.ToString() + '|' + myPosition.y.ToString();
+		Send("MYPOSITION|", unreliableChannel);
+	}
+
 	private void SpawnPlayer(string playerName, int cnnId)
 	{
 		GameObject go = Instantiate(playerPrefab) as GameObject;
@@ -136,7 +164,13 @@ public class Client : MonoBehaviour {
 		p.playerName = playerName;
 		p.connectionId = cnnId;
 		p.avatar.GetComponentInChildren<TextMesh>().text = playerName;
-		players.Add(p);
+		players.Add(cnnId, p);
+	}
+
+	private void PlayerDisconnected(int cnnId)
+	{
+		Destroy(players[cnnId].avatar);
+		players.Remove(cnnId);
 	}
 
 	private void Send(string message, int channelId)

@@ -42,6 +42,7 @@ public class VRServer : MonoBehaviour {
 
 	private void Start()
 	{
+
 		NetworkTransport.Init();
 		ConnectionConfig cc = new ConnectionConfig();
 

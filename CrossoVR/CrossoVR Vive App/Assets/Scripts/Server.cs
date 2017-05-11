@@ -8,6 +8,7 @@ public class ServerClient
 {
 	public int connectionId;
 	public string playerName;
+	public Vector3 position;
 }
 
 public class Server : MonoBehaviour {
@@ -25,6 +26,9 @@ public class Server : MonoBehaviour {
 	private byte error;
 
 	private List<ServerClient> clients = new List<ServerClient>();
+
+	private float lastMovementUpdate;
+	private float movementUpdateRate = 0.05f;
 
 	private void Start()
 	{
@@ -73,11 +77,12 @@ public class Server : MonoBehaviour {
 						OnNameIs(connectionId, splitMsg[1]);
 						break;
 
-					case "CNN":
+					case "MYPOSITION":
+						OnMyPosition(connectionId, float.Parse(splitMsg[1]), float.Parse(splitMsg[2]));
 						break;
 
-					case "DC":
-						OnDisconnection(connectionId);
+					default:
+						Debug.Log("Invalid message : " + msg);
 						break;
 				}
 				break;
@@ -85,6 +90,16 @@ public class Server : MonoBehaviour {
 				Debug.Log("Player " + connectionId + " has disconnected");
 				OnDisconnection(connectionId);
 				break;
+		}
+
+		if(Time.time - lastMovementUpdate > movementUpdateRate)
+		{
+			lastMovementUpdate = Time.time;
+			string m = "ASKPOSITION|";
+			foreach(ServerClient sc in clients)
+				m += sc.connectionId.ToString() + '%' + sc.position.x.ToString() + '%' + sc.position.y.ToString() + '|';
+			
+			Send(m, unreliableChannel, clients);
 		}		
 	}
 
@@ -122,6 +137,11 @@ public class Server : MonoBehaviour {
 
 		//Tell everybody that a new player has connected
 		Send("CNN|" + pName + '|' + cnnId, reliableChannel, clients);
+	}
+
+	private void OnMyPosition(int cnnId, float x, float y)
+	{
+		clients.Find(c=>c.connectionId==cnnId).position = new Vector3(x, y, 0);
 	}
 
 	private void Send(string message, int channelId, int cnnId)
